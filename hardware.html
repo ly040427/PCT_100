@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硬件规格 - PCT-100 化工控制实训装置</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========================================
+           PCT-100 化工控制实训装置 - 内嵌样式
+           设计风格：现代工业科技风
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #165DFF;
+            --primary-dark: #0E42D2;
+            --primary-light: #4080FF;
+            --accent-color: #FF7D00;
+            --accent-light: #FF9A2E;
+            --dark-bg: #0F172A;
+            --dark-card: #1E293B;
+            --dark-border: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --danger-color: #EF4444;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #334155;
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 - 玻璃拟态效果 */
+        .navbar {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .nav-logo h2 {
+            font-weight: 700;
+            background: linear-gradient(90deg, #FFFFFF 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+            display: block;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 93, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(22, 93, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        /* 页面头部 */
+        .page-header {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 通用区域样式 */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: #0F172A;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            border-radius: 2px;
+        }
+
+        /* 硬件规格内容 */
+        .hardware-specs {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .specs-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .specs-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #E2E8F0;
+            transition: all var(--transition-normal);
+        }
+
+        .specs-section:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .specs-section h2 {
+            color: #0F172A;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            font-size: 1.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .specs-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            border-radius: 3px;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .specs-table th,
+        .specs-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .specs-table th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .specs-table tr {
+            transition: background-color var(--transition-fast);
+        }
+
+        .specs-table tr:hover {
+            background-color: #F1F5F9;
+        }
+
+        .specs-table td {
+            color: #475569;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 500;
+            color: #1E293B;
+        }
+
+        .pinout-diagram {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #E2E8F0;
+        }
+
+        .pinout-diagram h3 {
+            margin-bottom: 1.5rem;
+            color: #0F172A;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .pinout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pin-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            transition: all var(--transition-fast);
+        }
+
+        .pin-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .pin-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .pin-name {
+            font-weight: 500;
+            color: #1E293B;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .footer-logo h3 {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .specs-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-item {
+                margin: 0.25rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .specs-section {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .pinout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-microchip"></i>
+                <h2>PCT-100 实训装置</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link">产品说明书</a></li>
+                <li class="nav-item"><a href="hardware.html" class="nav-link active">硬件规格</a></li>
+                <li class="nav-item"><a href="remote.html" class="nav-link">远程监控</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">硬件规格</h1>
+            <p class="page-subtitle">详细的硬件参数和引脚定义说明</p>
+        </div>
+    </section>
+
+    <!-- 硬件规格内容 -->
+    <section class="hardware-specs">
+        <div class="container">
+            <div class="specs-container">
+                <!-- 主控单元 -->
+                <div class="specs-section">
+                    <h2>1. 主控单元</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>规格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>主控芯片</td>
+                                <td>ESP32-C3-MINI-1</td>
+                            </tr>
+                            <tr>
+                                <td>处理器</td>
+                                <td>RISC-V 单核处理器，主频160MHz</td>
+                            </tr>
+                            <tr>
+                                <td>Flash</td>
+                                <td>4MB</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>400KB SRAM</td>
+                            </tr>
+                            <tr>
+                                <td>WiFi</td>
+                                <td>802.11b/g/n，支持STA+AP双模式</td>
+                            </tr>
+                            <tr>
+                                <td>蓝牙</td>
+                                <td>BLE 5.0</td>
+                            </tr>
+                            <tr>
+                                <td>工作电压</td>
+                                <td>3.3V</td>
+                            </tr>
+                            <tr>
+                                <td>工作温度</td>
+                                <td>-40℃ ~ +85℃</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 传感器单元 -->
+                <div class="specs-section">
+                    <h2>2. 传感器单元</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>传感器</th>
+                                <th>型号</th>
+                                <th>参数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>温度传感器</td>
+                                <td>DS18B20</td>
+                                <td>测量范围：-55℃ ~ +125℃，精度：±0.5℃</td>
+                            </tr>
+                            <tr>
+                                <td>光照传感器</td>
+                                <td>光敏电阻</td>
+                                <td>测量范围：0 ~ 1000 Lux，响应时间：<20ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 输入输出单元 -->
+                <div class="specs-section">
+                    <h2>3. 输入输出单元</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>组件</th>
+                                <th>规格</th>
+                                <th>功能</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>总闸开关</td>
+                                <td>自锁式按键开关</td>
+                                <td>控制系统电源通断</td>
+                            </tr>
+                            <tr>
+                                <td>功能按键</td>
+                                <td>轻触式按键</td>
+                                <td>切换显示页面和控制模式</td>
+                            </tr>
+                            <tr>
+                                <td>继电器</td>
+                                <td>2路，5V驱动</td>
+                                <td>控制外部设备（灯、风扇等）</td>
+                            </tr>
+                            <tr>
+                                <td>RGB状态灯</td>
+                                <td>WS2812</td>
+                                <td>显示系统运行状态</td>
+                            </tr>
+                            <tr>
+                                <td>OLED显示屏</td>
+                                <td>128×64，I2C接口</td>
+                                <td>显示系统信息和传感器数据</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 通信接口 -->
+                <div class="specs-section">
+                    <h2>4. 通信接口</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>接口</th>
+                                <th>规格</th>
+                                <th>用途</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>USB Type-C</td>
+                                <td>USB 2.0</td>
+                                <td>供电和程序下载</td>
+                            </tr>
+                            <tr>
+                                <td>UART</td>
+                                <td>TTL电平，波特率115200</td>
+                                <td>串口调试和数据传输</td>
+                            </tr>
+                            <tr>
+                                <td>I2C</td>
+                                <td>标准模式（100kHz）</td>
+                                <td>连接OLED显示屏</td>
+                            </tr>
+                            <tr>
+                                <td>单总线</td>
+                                <td>DS18B20协议</td>
+                                <td>连接温度传感器</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 电源参数 -->
+                <div class="specs-section">
+                    <h2>5. 电源参数</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>规格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>输入电压</td>
+                                <td>5V USB供电</td>
+                            </tr>
+                            <tr>
+                                <td>工作电流</td>
+                                <td>约100mA（待机），约200mA（满载）</td>
+                            </tr>
+                            <tr>
+                                <td>最大输出电流</td>
+                                <td>500mA（继电器输出）</td>
+                            </tr>
+                            <tr>
+                                <td>过流保护</td>
+                                <td>自恢复保险丝，1A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 引脚定义 -->
+                <div class="specs-section">
+                    <h2>6. 引脚定义</h2>
+                    <div class="pinout-diagram">
+                        <h3>ESP32-C3 引脚分配</h3>
+                        <div class="pinout-grid">
+                            <div class="pin-item">
+                                <div class="pin-number">2</div>
+                                <div class="pin-name">DS18B20 温度传感器</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">3</div>
+                                <div class="pin-name">光敏电阻 ADC</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">4</div>
+                                <div class="pin-name">KEY2 功能按键</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">5</div>
+                                <div class="pin-name">KEY1 总闸开关</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">6</div>
+                                <div class="pin-name">WS2812 RGB灯</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">7</div>
+                                <div class="pin-name">继电器3 控制</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">8</div>
+                                <div class="pin-name">继电器4 控制</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">9</div>
+                                <div class="pin-name">OLED SDA</div>
+                            </div>
+                            <div class="pin-item">
+                                <div class="pin-number">10</div>
+                                <div class="pin-name">OLED SCL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 机械参数 -->
+                <div class="specs-section">
+                    <h2>7. 机械参数</h2>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>规格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>主板尺寸</td>
+                                <td>100mm × 80mm</td>
+                            </tr>
+                            <tr>
+                                <td>外壳尺寸</td>
+                                <td>150mm × 100mm × 50mm</td>
+                            </tr>
+                            <tr>
+                                <td>重量</td>
+                                <td>约200g</td>
+                            </tr>
+                            <tr>
+                                <td>安装方式</td>
+                                <td>桌面放置或壁挂安装</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-microchip"></i>
+                    <h3>PCT-100 化工控制实训装置</h3>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="product.html">产品说明书</a>
+                    <a href="hardware.html">硬件规格</a>
+                    <a href="remote.html">远程监控</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PCT-100 化工控制实训装置 | 版本 V2.0 | 设备ID: PCT_100_027</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

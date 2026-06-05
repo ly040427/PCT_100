@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品说明书 - PCT-100 化工控制实训装置</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式与首页完全相同，此处省略重复部分，实际文件中包含完整样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #165DFF;
+            --primary-dark: #0E42D2;
+            --primary-light: #4080FF;
+            --accent-color: #FF7D00;
+            --accent-light: #FF9A2E;
+            --dark-bg: #0F172A;
+            --dark-card: #1E293B;
+            --dark-border: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --danger-color: #EF4444;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #334155;
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏样式与首页完全相同 */
+        .navbar {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .nav-logo h2 {
+            font-weight: 700;
+            background: linear-gradient(90deg, #FFFFFF 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+            display: block;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 93, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(22, 93, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        /* 页面头部 */
+        .page-header {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 产品说明书内容 */
+        .product-manual {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .manual-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+
+        .manual-sidebar {
+            position: relative;
+        }
+
+        .sidebar-sticky {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #E2E8F0;
+        }
+
+        .sidebar-sticky h3 {
+            margin-bottom: 1.5rem;
+            color: #0F172A;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #64748B;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all var(--transition-fast);
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            background: linear-gradient(135deg, rgba(22, 93, 255, 0.1) 0%, rgba(22, 93, 255, 0.05) 100%);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .sidebar-download {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .manual-content {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #E2E8F0;
+        }
+
+        .manual-section {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .manual-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            color: #0F172A;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .back-to-top {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .back-to-top:hover {
+            text-decoration: underline;
+        }
+
+        .manual-section h3 {
+            color: #1E293B;
+            margin: 2rem 0 1.25rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .manual-section p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .manual-section ul,
+        .manual-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1.25rem;
+            color: #475569;
+        }
+
+        .manual-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .info-card {
+            display: flex;
+            gap: 1rem;
+            background: linear-gradient(135deg, #EBF8FF 0%, #BEE3F8 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .info-card-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: flex-start;
+            padding-top: 0.25rem;
+        }
+
+        .info-card-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .info-card-content p {
+            margin: 0;
+            color: #2C5282;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .component-card {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid #E2E8F0;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .component-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .component-card h4 {
+            margin-bottom: 0.5rem;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .component-card p {
+            margin: 0;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        .experiments-list {
+            margin: 2rem 0;
+        }
+
+        .experiment-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid #E2E8F0;
+            transition: background-color var(--transition-fast);
+        }
+
+        .experiment-item:hover {
+            background-color: #F8FAFC;
+        }
+
+        .experiment-item:last-child {
+            border-bottom: none;
+        }
+
+        .experiment-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .experiment-content h4 {
+            margin-bottom: 0.5rem;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .experiment-content p {
+            margin: 0;
+            color: #64748B;
+        }
+
+        .steps-list {
+            margin: 1.5rem 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content p {
+            margin: 0;
+            padding-top: 0.5rem;
+        }
+
+        .key-operations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .key-card {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+        }
+
+        .key-icon {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+
+        .key-icon small {
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .key-card h4 {
+            margin-bottom: 0.5rem;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .key-card p {
+            margin: 0;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .screen-card {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #E2E8F0;
+        }
+
+        .screen-card h4 {
+            margin-bottom: 1rem;
+            color: #0F172A;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .screen-card ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .warning-card {
+            display: flex;
+            gap: 1rem;
+            background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--danger-color);
+        }
+
+        .warning-icon {
+            font-size: 1.5rem;
+            color: var(--danger-color);
+            display: flex;
+            align-items: flex-start;
+            padding-top: 0.25rem;
+        }
+
+        .warning-content h4 {
+            margin-bottom: 0.5rem;
+            color: #991B1B;
+            font-weight: 600;
+        }
+
+        .warning-content ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: #7F1D1D;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .footer-logo h3 {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .manual-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .manual-sidebar {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .sidebar-sticky {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-item {
+                margin: 0.25rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .manual-content {
+                padding: 1.5rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .components-grid,
+            .key-operations,
+            .screens-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .experiment-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-microchip"></i>
+                <h2>PCT-100 实训装置</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link active">产品说明书</a></li>
+                <li class="nav-item"><a href="hardware.html" class="nav-link">硬件规格</a></li>
+                <li class="nav-item"><a href="remote.html" class="nav-link">远程监控</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">产品说明书</h1>
+            <p class="page-subtitle">详细介绍PCT-100化工控制实训装置的使用方法和注意事项</p>
+        </div>
+    </section>
+
+    <!-- 产品说明书内容 -->
+    <section class="product-manual">
+        <div class="container">
+            <div class="manual-container">
+                <!-- 侧边目录 -->
+                <div class="manual-sidebar">
+                    <div class="sidebar-sticky">
+                        <h3><i class="fas fa-list"></i> 目录导航</h3>
+                        <ul class="toc-list">
+                            <li><a href="#section1" class="toc-link">1. 产品概述</a></li>
+                            <li><a href="#section2" class="toc-link">2. 系统组成</a></li>
+                            <li><a href="#section3" class="toc-link">3. 主要实验项目</a></li>
+                            <li><a href="#section4" class="toc-link">4. 操作说明</a></li>
+                            <li><a href="#section5" class="toc-link">5. 安全注意事项</a></li>
+                            <li><a href="#section6" class="toc-link">6. 维护与保养</a></li>
+                        </ul>
+                        <div class="sidebar-download">
+                            <a href="#" class="btn btn-outline btn-sm">
+                                <i class="fas fa-download"></i> 下载PDF版
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主内容区 -->
+                <div class="manual-content">
+                    <div class="manual-section" id="section1">
+                        <div class="section-header">
+                            <h2>1. 产品概述</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        <p>PCT-100化工控制实训装置是专为高等院校和职业院校化工类、自动化类专业设计的物联网智能控制教学平台。装置基于ESP32-C3主控芯片，集成了温度、光照传感器，继电器输出，OLED显示，WiFi通信和MQTT远程控制功能，能够满足《过程控制工程》、《化工自动化及仪表》、《物联网技术》等课程的实验教学需求。</p>
+                        <div class="info-card">
+                            <div class="info-card-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="info-card-content">
+                                <h4>产品特点</h4>
+                                <p>本装置采用模块化设计，结构清晰，便于学生理解和学习。所有源代码均提供详细注释，支持二次开发，可根据教学需求扩展更多功能。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-section" id="section2">
+                        <div class="section-header">
+                            <h2>2. 系统组成</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        
+                        <h3>2.1 硬件系统</h3>
+                        <div class="components-grid">
+                            <div class="component-card">
+                                <i class="fas fa-microchip"></i>
+                                <h4>主控单元</h4>
+                                <p>ESP32-C3 RISC-V处理器，主频160MHz，4MB Flash</p>
+                            </div>
+                            <div class="component-card">
+                                <i class="fas fa-thermometer-half"></i>
+                                <h4>传感器单元</h4>
+                                <p>DS18B20温度传感器、光敏电阻光照传感器</p>
+                            </div>
+                            <div class="component-card">
+                                <i class="fas fa-keyboard"></i>
+                                <h4>输入单元</h4>
+                                <p>KEY1自锁总闸开关、KEY2轻触功能按键</p>
+                            </div>
+                            <div class="component-card">
+                                <i class="fas fa-plug"></i>
+                                <h4>输出单元</h4>
+                                <p>2路继电器、WS2812 RGB状态灯</p>
+                            </div>
+                            <div class="component-card">
+                                <i class="fas fa-tv"></i>
+                                <h4>显示单元</h4>
+                                <p>128×64 SH1106 OLED显示屏</p>
+                            </div>
+                            <div class="component-card">
+                                <i class="fas fa-wifi"></i>
+                                <h4>通信单元</h4>
+                                <p>WiFi 802.11b/g/n，支持STA+AP双模式</p>
+                            </div>
+                        </div>
+
+                        <h3>2.2 软件系统</h3>
+                        <ul>
+                            <li>操作系统：FreeRTOS实时操作系统</li>
+                            <li>开发环境：Arduino IDE 2.0+</li>
+                            <li>通信协议：MQTT 3.1.1、HTTP、NTP</li>
+                            <li>配置方式：Web配网页面、串口命令行</li>
+                            <li>控制模式：自动模式、手动模式</li>
+                        </ul>
+                    </div>
+
+                    <div class="manual-section" id="section3">
+                        <div class="section-header">
+                            <h2>3. 主要实验项目</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        <div class="experiments-list">
+                            <div class="experiment-item">
+                                <div class="experiment-number">01</div>
+                                <div class="experiment-content">
+                                    <h4>ESP32开发环境搭建与基础IO实验</h4>
+                                    <p>学习Arduino IDE的安装和使用，掌握ESP32的基本IO操作</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">02</div>
+                                <div class="experiment-content">
+                                    <h4>DS18B20温度传感器数据采集实验</h4>
+                                    <p>学习单总线协议，掌握温度传感器的数据读取方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">03</div>
+                                <div class="experiment-content">
+                                    <h4>光敏电阻光照强度采集实验</h4>
+                                    <p>学习ADC模数转换，掌握光照强度的测量方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">04</div>
+                                <div class="experiment-content">
+                                    <h4>继电器控制与输出实验</h4>
+                                    <p>学习继电器的工作原理，掌握数字输出控制方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">05</div>
+                                <div class="experiment-content">
+                                    <h4>OLED显示屏显示实验</h4>
+                                    <p>学习I2C通信协议，掌握OLED显示屏的使用方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">06</div>
+                                <div class="experiment-content">
+                                    <h4>WS2812 RGB彩灯控制实验</h4>
+                                    <p>学习单总线LED驱动，掌握全彩LED的控制方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">07</div>
+                                <div class="experiment-content">
+                                    <h4>WiFi STA模式连接实验</h4>
+                                    <p>学习WiFi的基本使用，掌握STA模式的连接方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">08</div>
+                                <div class="experiment-content">
+                                    <h4>WiFi AP模式与Web配网实验</h4>
+                                    <p>学习AP模式的使用，掌握Web配网的实现方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">09</div>
+                                <div class="experiment-content">
+                                    <h4>MQTT客户端通信实验</h4>
+                                    <p>学习MQTT协议，掌握客户端的连接和消息收发</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">10</div>
+                                <div class="experiment-content">
+                                    <h4>自动控制模式实验</h4>
+                                    <p>学习自动控制原理，掌握基于阈值的自动控制方法</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">11</div>
+                                <div class="experiment-content">
+                                    <h4>手动控制模式实验</h4>
+                                    <p>学习手动控制方法，掌握本地和远程控制的实现</p>
+                                </div>
+                            </div>
+                            <div class="experiment-item">
+                                <div class="experiment-number">12</div>
+                                <div class="experiment-content">
+                                    <h4>综合物联网控制系统实验</h4>
+                                    <p>综合运用所学知识，构建完整的物联网控制系统</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-section" id="section4">
+                        <div class="section-header">
+                            <h2>4. 操作说明</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        
+                        <h3>4.1 开机与关机</h3>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p><strong>开机：</strong>将KEY1自锁开关扳到"ON"位置，系统启动，显示开机动画</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p><strong>关机：</strong>将KEY1自锁开关扳到"OFF"位置，系统关闭</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>4.2 按键操作</h3>
+                        <div class="key-operations">
+                            <div class="key-card">
+                                <div class="key-icon">KEY1</div>
+                                <div class="key-content">
+                                    <h4>总闸开关</h4>
+                                    <p>控制系统电源通断</p>
+                                </div>
+                            </div>
+                            <div class="key-card">
+                                <div class="key-icon">KEY2<br><small>短按</small></div>
+                                <div class="key-content">
+                                    <h4>切换显示页面</h4>
+                                    <p>主页面 → WiFi信息页 → 主页面</p>
+                                </div>
+                            </div>
+                            <div class="key-card">
+                                <div class="key-icon">KEY2<br><small>长按≥2s</small></div>
+                                <div class="key-content">
+                                    <h4>切换控制模式</h4>
+                                    <p>自动模式 ↔ 手动模式</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>4.3 显示页面说明</h3>
+                        <div class="screens-grid">
+                            <div class="screen-card">
+                                <h4>主页面</h4>
+                                <ul>
+                                    <li>当前模式（自动/手动）</li>
+                                    <li>总闸状态（ON/OFF）</li>
+                                    <li>光照值/阈值</li>
+                                    <li>温度值/阈值</li>
+                                    <li>灯光状态（ON/OFF）</li>
+                                    <li>风扇状态（ON/OFF）</li>
+                                </ul>
+                            </div>
+                            <div class="screen-card">
+                                <h4>WiFi信息页</h4>
+                                <ul>
+                                    <li>当前时间（HH:MM:SS）</li>
+                                    <li>当前日期（YYYY-MM-DD 周X）</li>
+                                    <li>IP地址</li>
+                                    <li>WiFi SSID</li>
+                                    <li>信号强度（百分比）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>4.4 自动模式</h3>
+                        <p>在自动模式下，系统根据预设的温度和光照阈值自动控制灯和风扇：</p>
+                        <ul>
+                            <li>当光照值<strong>低于</strong>光照阈值时，自动打开灯光</li>
+                            <li>当温度值<strong>高于</strong>温度阈值时，自动打开风扇</li>
+                            <li>阈值可通过MQTT远程命令修改</li>
+                        </ul>
+
+                        <h3>4.5 手动模式</h3>
+                        <p>在手动模式下，灯和风扇的状态由远程命令或本地按键控制，不受阈值影响。</p>
+                    </div>
+
+                    <div class="manual-section" id="section5">
+                        <div class="section-header">
+                            <h2>5. 安全注意事项</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        <div class="warning-card">
+                            <div class="warning-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="warning-content">
+                                <h4>安全警告</h4>
+                                <ul>
+                                    <li>本装置工作电压为5V USB供电，<strong>严禁接入高压电源</strong></li>
+                                    <li>实验前应仔细阅读本说明书和相关安全规程</li>
+                                    <li>严禁在设备运行时插拔传感器和模块</li>
+                                    <li>如发生异常情况，应立即断开电源</li>
+                                    <li>实验结束后，应关闭电源并整理好实验台</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-section" id="section6">
+                        <div class="section-header">
+                            <h2>6. 维护与保养</h2>
+                            <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+                        </div>
+                        <ul>
+                            <li>定期检查各连接部位是否牢固</li>
+                            <li>保持设备清洁，避免灰尘和液体进入</li>
+                            <li>长期不用时，应将设备存放在干燥通风处</li>
+                            <li>如出现故障，请联系专业人员维修</li>
+                            <li>定期更新固件以获得最新功能和修复</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-microchip"></i>
+                    <h3>PCT-100 化工控制实训装置</h3>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="product.html">产品说明书</a>
+                    <a href="hardware.html">硬件规格</a>
+                    <a href="remote.html">远程监控</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PCT-100 化工控制实训装置 | 版本 V2.0 | 设备ID: PCT_100_027</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 平滑滚动脚本 -->
+    <script>
+        // 目录点击平滑滚动
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 更新活跃状态
+                    document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // 回到顶部
+        document.querySelectorAll('.back-to-top').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 滚动时更新目录活跃状态
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.manual-section');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
